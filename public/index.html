@@ -4,7 +4,8 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Laser Eyes</title>
-
+    <link rel='stylesheet' href='global.css'>
+    <link rel='stylesheet' href='bundle.css'>
     <!-- update the version number as needed -->
     <script defer src="/__/firebase/8.6.1/firebase-app.js"></script>
     <!-- include only the Firebase features as you need -->
@@ -22,11 +23,8 @@
       to avoid connecting the SDK to running emulators.
     -->
     <script defer src="/__/firebase/init.js?useEmulator=true"></script>
+    <script defer src='/bundle.js'></script>
   </head>
   <body>
-    <form method="POST" action="https://lasereyes.herokuapp.com/laserify" enctype="multipart/form-data">
-      <input type="file" name="image" id="image">
-      <input type="submit" name="submit" value="Laserify">
-    </form>
   </body>
 </html>
