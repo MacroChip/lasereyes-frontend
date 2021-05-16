@@ -19,9 +19,6 @@
 </script>
 
 <style>
-    form {
-        height: 100%;
-    }
     input {
         display: block;
         margin: 8px;
