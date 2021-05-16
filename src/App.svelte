@@ -4,12 +4,16 @@
     const host = process.env.HOST;
     let search = e => {
         e.preventDefault();
-        laserPromise = fetch(`${host}/`).then(res => {
+        const fileSelector = document.getElementById('image');
+        if (!fileSelector.files[0]) {
+            laserPromise = Promise.reject("Please select an image to laserify");
+            return;
+        }
+        laserPromise = fetch(`${host}/api`).then(res => {
             console.log("api awake. Laserifying");
             const formData  = new FormData();
-            const fileSelector = document.getElementById('image');
             formData.append('image', fileSelector.files[0]);
-            return fetch(`${host}/laserify`, {
+            return fetch(`${host}/api/laserify`, {
                 method: "post",
                 body: formData,
             }).then(res => res.blob())
