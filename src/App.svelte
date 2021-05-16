@@ -25,14 +25,15 @@
 <style>
     input {
         display: block;
-        margin: 8px;
+        margin: 8px auto;
     }
     button {
         position: relative;
+        display: block;
         width: 240px;
         background: rgba(0, 190, 190, 0.2);
         border: 1px solid #00bebe;
-        margin: 20px;
+        margin: 20px auto;
         padding: 5px 27px;
         cursor: pointer;
         color: #00bebe;
@@ -48,6 +49,13 @@
         border-color: #00dcdc;
         background:  rgba(0, 190, 190, 0.2);
     }
+    div {
+        text-align: center;
+    }
+    img {
+        display: block;
+        margin: 0 auto;
+    }
 </style>
 
 <form>
@@ -61,6 +69,6 @@
   {:then res}
     <div>Your picture has been downloaded</div>
   {:catch err}
-    {err}
+    <div>{err}</div>
   {/await}
 {/if}
