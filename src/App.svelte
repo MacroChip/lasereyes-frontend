@@ -16,7 +16,15 @@
             return fetch(`${host}/api/laserify`, {
                 method: "post",
                 body: formData,
-            }).then(res => res.blob())
+            })
+            .then(res => {
+                if (!res.ok) {
+                    throw res.json();
+                } else {
+                    return res;
+                }
+            })
+            .then(res => res.blob())
             .then(blob => saveAs(blob, 'laser-eyes.jpg')) //TODO: get filename from Content-Disposition
         })
     }
@@ -67,11 +75,7 @@
     <img src="dab.gif" alt="dab" />
     <div class="msg">Laserifying</div>
   {:then res}
-    {#if res.error}
-      <div>{res.error}</div>
-    {:else}
-      <div>Your picture has been downloaded</div>
-    {/if}
+    <div>Your picture has been downloaded</div>
   {:catch err}
     <div>{err}</div>
   {/await}
