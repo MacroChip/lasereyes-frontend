@@ -1,5 +1,6 @@
 <script>
-    const saveAs = require('file-saver');
+    const { error }=require('console');
+const saveAs = require('file-saver');
     let laserPromise;
     const host = process.env.HOST;
     let search = e => {
@@ -67,7 +68,11 @@
     <img src="dab.gif" alt="dab" />
     <div class="msg">Laserifying</div>
   {:then res}
-    <div>Your picture has been downloaded</div>
+    {#if res.error}
+      <div>{res.error}</div>
+    {:else}
+      <div>Your picture has been downloaded</div>
+    {/if}
   {:catch err}
     <div>{err}</div>
   {/await}
