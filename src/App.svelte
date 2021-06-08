@@ -1,6 +1,5 @@
 <script>
-    const { error }=require('console');
-const saveAs = require('file-saver');
+    const saveAs = require('file-saver');
     let laserPromise;
     const host = process.env.HOST;
     let search = e => {
