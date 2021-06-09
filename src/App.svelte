@@ -17,9 +17,9 @@
                 method: "post",
                 body: formData,
             })
-            .then(res => {
+            .then(async res => {
                 if (!res.ok) {
-                    throw res.json();
+                    throw `Error: ${(await res.json()).error}`;
                 } else {
                     return res;
                 }
