@@ -1,3 +1,4 @@
+
 import App from './App.svelte';
 
 const app = new App({
@@ -8,5 +9,6 @@ const app = new App({
 });
 
 window.app = app;
+window.firebase.analytics();
 
 export default app;
