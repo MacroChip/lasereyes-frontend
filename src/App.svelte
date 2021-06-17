@@ -2,17 +2,17 @@
     const saveAs = require('file-saver');
     let laserPromise;
     const host = process.env.HOST;
+    let files = []
     let search = e => {
         e.preventDefault();
-        const fileSelector = document.getElementById('image');
-        if (!fileSelector.files[0]) {
+        if (!files[0]) {
             laserPromise = Promise.reject("Please select an image to laserify");
             return;
         }
         laserPromise = fetch(`${host}/api`).then(res => {
             console.log("api awake. Laserifying");
             const formData  = new FormData();
-            formData.append('image', fileSelector.files[0]);
+            formData.append('image', files[0]);
             return fetch(`${host}/api/laserify`, {
                 method: "post",
                 body: formData,
@@ -81,9 +81,12 @@
 <h1>Automatic🧠 laser⚡ eyes👀</h1>
 <form>
     <label for="image" class="upload-label">
-        Click here to choose an image
+        <span>Click here to choose an image</span>
+        {#if files[0]}
+            <span>(Currently using {files[0].name})</span>
+        {/if}
     </label>
-    <input type="file" name="image" id="image" style="display: none;">
+    <input type="file" name="image" id="image" style="display: none;" bind:files>
     <button on:click={search}>Laserify</button>
 </form>
 {#if laserPromise}
@@ -96,4 +99,6 @@
     <div>{err}</div>
   {/await}
 {/if}
-<a href="https://twitter.com/themacrochip" target="_blank">Made by Chip Thien</a>
+<div style="margin-top: 5px; text-align: inherit">
+    <a href="https://twitter.com/themacrochip" target="_blank">Made by Chip Thien</a>
+</div>
