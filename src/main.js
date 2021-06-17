@@ -9,7 +9,7 @@ const app = new App({
 });
 
 window.app = app;
-window.firebase.analytics();
+window.firebase && window.firebase.analytics();
 // var firebaseConfig = {
 // 	apiKey: "AIzaSyBM_05ysmvXdTiX9LdYhlkj4PTx2mFW8OA",
 // 	authDomain: "auto-laser.firebaseapp.com",
